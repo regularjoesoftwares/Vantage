@@ -1,10 +1,304 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vantage — a task app for those of us that hate task apps</title>
+<meta name="description" content="Vantage is a voice-first, one-screen task app with a coaching layer that quietly grows with you. Built by Regular Joe Software.">
+<style>
+  :root {
+    --navy: #1a2a4a;
+    --blue: #185fa5;
+    --ink: #1c2530;
+    --muted: #5b6472;
+    --bg: #ffffff;
+    --bg-soft: #f5f7fa;
+    --line: #e6e9ee;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  a { color: var(--blue); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    padding: 84px 0 96px;
+    text-align: center;
+  }
+  header.hero .wrap { max-width: 640px; }
+  .wordmark {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 18px;
+  }
+  header.hero h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    margin: 0 0 14px;
+    line-height: 1.2;
+  }
+  header.hero p.sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    margin: 0 auto 32px;
+    max-width: 480px;
+  }
+  .cta {
+    display: inline-block;
+    background: #fff;
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  .cta.secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.35);
+    margin-left: 10px;
+  }
+  .beta-note {
+    margin-top: 22px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+  }
+  .hero-promise {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #fff;
+  }
+
+  section { padding: 64px 0; }
+  section.soft { background: var(--bg-soft); }
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  p.section-sub {
+    text-align: center;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 44px;
+    font-size: 15px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 28px;
+  }
+  .feature {
+    padding: 16px 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .feature .icon {
+    font-size: 19px;
+    margin-bottom: 7px;
+    display: block;
+  }
+  .feature h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 5px;
+    line-height: 1.3;
+  }
+  .feature p {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .philosophy {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .philosophy blockquote {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--navy);
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+  .philosophy p {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .pricing {
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 32px;
+  }
+  .pricing .price {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .pricing .price .was {
+    font-size: 18px;
+    color: var(--muted);
+    text-decoration: line-through;
+    font-weight: 400;
+    margin-right: 8px;
+  }
+  .pricing p.detail {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 10px 0 0;
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+  }
+  footer nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  footer nav a:hover { color: var(--ink); }
+  footer .copyright { margin-top: 14px; color: #9aa2ad; }
+
+  .shots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(4px, 2vw, 20px);
+    flex-wrap: nowrap;
+  }
+  .shot-block { text-align: center; flex: 1 1 0; min-width: 0; max-width: 220px; }
+  .shot-block img {
+    width: 100%;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    box-shadow: 0 16px 40px rgba(26,42,74,0.16);
+    display: block;
+  }
+  .shot-block p {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .shot-arrow {
+    font-size: clamp(14px, 3vw, 26px);
+    color: var(--blue);
+    flex: 0 0 auto;
+  }
+  @media (max-width: 480px) {
+    .shot-block p { font-size: 11px; }
+  }
+</style>
 </head>
 <body>
-    <h1>Hello!</h1>
-    <p>My website is working.</p>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="wordmark">Vantage</div>
+    <h1>A task app for those of us that hate task apps.</h1>
+    <p class="sub">Say what's on your mind, and Vantage sorts it out. One calm screen. No clutter, no guilt, no fighting your own list.</p>
+    <a class="cta" href="mailto:regularjoesoftware@gmail.com?subject=Notify%20me%20when%20Vantage%20launches">Get notified at launch</a>
+    <div class="beta-note">Currently in private beta with a small group of testers.</div>
+    <div class="hero-promise">No subscriptions. No ads. No tracking. No accounts.</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap shots">
+    <div class="shot-block">
+      <img src="screenshots/voice-active.png" alt="Say a task naturally into Vantage while it listens.">
+      <p>Say it naturally</p>
+    </div>
+    <div class="shot-arrow">→</div>
+    <div class="shot-block">
+      <img src="screenshots/voice-entry.png" alt="Vantage fills in the due date, duration, project, and more.">
+      <p>Vantage fills in the details.</p>
+    </div>
+    <div class="shot-arrow">→</div>
+    <div class="shot-block">
+      <img src="screenshots/task-list.png" alt="The task lands on one calm, uncluttered list.">
+      <p>See it in the main screen</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Built to get out of your way</h2>
+    <p class="section-sub">Most task apps ask you to manage the app. Vantage just wants to help you get through your day.</p>
+    <div class="features">
+      <div class="feature">
+        <span class="icon">🎙️</span>
+        <h3>Voice capture</h3>
+        <p>Vantage understands you and will automatically fill in detail fields.</p>
+      </div>
+      <div class="feature">
+        <span class="icon">🎯</span>
+        <h3>Focus mode</h3>
+        <p>One task at a time, no notifications.</p>
+      </div>
+      <div class="feature">
+        <span class="icon">🌱</span>
+        <h3>A coaching layer that grows with you</h3>
+        <p>Vantage notices your patterns and shows them to you so you can learn to be more productive, with less stress.</p>
+      </div>
+      <div class="feature">
+        <span class="icon">📅</span>
+        <h3>Calendar sync</h3>
+        <p>Add any task to your calendar with one tap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap philosophy">
+    <blockquote>"Tasks exist to serve the person. The list is not the point — the person becoming who they want to be is the point."</blockquote>
+    <p>That's the idea behind everything in Vantage. It's a task app first — reliable, fast, no lecture required. But it's built so that, over time, it can help with something bigger than your to-do list, if that's ever something you want from it.</p>
+  </div>
+</section>
+
+<section id="get-notified">
+  <div class="wrap">
+    <h2>Early-supporter pricing</h2>
+    <p class="section-sub">Free to try for two weeks. No account required to start.</p>
+    <div class="pricing">
+      <div class="price"><span class="was">$9.99</span>$4.99</div>
+      <p class="detail">One-time unlock. Not a subscription. Extend your trial by sharing a bit of feedback along the way.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <nav>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:regularjoesoftware@gmail.com">Support</a>
+    </nav>
+    <div class="copyright">© 2026 Regular Joe Software</div>
+  </div>
+</footer>
+
 </body>
 </html>
