@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vantage — Quick Start Guide</title>
+
+  <meta
+    name="description"
+    content="A short, four-step guide to Vantage: add a task by voice, type, or Siri; check the details; plan your day; focus and finish."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      color: #172033;
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .wrap.narrow {
+      width: min(760px, calc(100% - 40px));
+    }
+
+    a {
+      color: #295b9b;
+    }
+
+    /* -------------------------
+       HERO
+    ------------------------- */
+
+    .hero {
+      padding: 72px 0 60px;
+      text-align: center;
+      background:
+        linear-gradient(
+          180deg,
+          #edf5ff 0%,
+          #f8fafc 100%
+        );
+    }
+
+    .wordmark {
+      display: inline-block;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #295b9b;
+      text-decoration: none;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: #172033;
+    }
+
+    .hero-sub {
+      max-width: 620px;
+      margin: 22px auto 0;
+      font-size: 19px;
+      color: #536174;
+    }
+
+    /* -------------------------
+       BUTTONS
+    ------------------------- */
+
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.15s ease;
+    }
+
+    .button-primary {
+      background: #295b9b;
+      color: white;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      background: #234f88;
+    }
+
+    .button-secondary {
+      color: #295b9b;
+      border: 1px solid #b8cbe2;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .button-secondary:hover {
+      transform: translateY(-1px);
+      background: white;
+    }
+
+    .cta-row {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* -------------------------
+       GUIDE BODY
+    ------------------------- */
+
+    main {
+      padding: 60px 0 30px;
+    }
+
+    .step {
+      padding: 0 0 44px;
+      margin: 0 0 44px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .step:last-of-type {
+      border-bottom: none;
+    }
+
+    .step h2 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 20px;
+      font-size: 27px;
+      letter-spacing: -0.5px;
+    }
+
+    .step-num {
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #e8f1fc;
+      color: #295b9b;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .step ul {
+      margin: 0 0 4px;
+      padding-left: 22px;
+    }
+
+    .step li {
+      margin: 0 0 12px;
+      font-size: 17px;
+      color: #3f4a5c;
+    }
+
+    .step li strong {
+      color: #172033;
+    }
+
+    .step .sub-list {
+      margin-top: 12px;
+    }
+
+    .amber {
+      color: #b26a00;
+      font-weight: 700;
+    }
+
+    /* -------------------------
+       SCREENSHOTS
+    ------------------------- */
+
+    .shots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin: 24px 0 8px;
+    }
+
+    .shots img {
+      width: 240px;
+      max-width: 46%;
+      border-radius: 22px;
+      box-shadow:
+        0 12px 32px rgba(23, 32, 51, 0.12);
+    }
+
+    @media (max-width: 560px) {
+      .shots img {
+        max-width: 64%;
+      }
+    }
+
+    /* -------------------------
+       "MORE" CALLOUT
+    ------------------------- */
+
+    .more {
+      background: #edf5ff;
+      border-radius: 20px;
+      padding: 32px 36px;
+    }
+
+    .more h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .more p {
+      margin: 0;
+      font-size: 17px;
+      color: #29486c;
+    }
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+
+    footer {
+      padding: 44px 0 55px;
+      text-align: center;
+      color: #7b8798;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #536b8b;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    /* -------------------------
+       MOBILE
+    ------------------------- */
+
+    @media (max-width: 800px) {
+
+      .hero {
+        padding: 56px 0 48px;
+      }
+
+      main {
+        padding: 48px 0 20px;
+      }
+
+      .step h2 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="wrap">
+
+      <a class="wordmark" href="index.html">Vantage</a>
+
+      <h1>Quick Start Guide</h1>
+
+      <p class="hero-sub">
+        Four steps to add a task and get through your day.
+        Everything else you can learn as you need it.
+      </p>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="wrap narrow">
+
+      <!-- 1 -->
+
+      <section class="step">
+
+        <h2><span class="step-num">1</span> Add a Task</h2>
+
+        <ul>
+          <li>
+            <strong>Voice.</strong> Press and hold the Voice button while you
+            speak the task name and any details you want to include. Take your
+            time — Vantage will keep listening as long as you hold the button.
+          </li>
+          <li>
+            When you release it, Vantage separates what you said into the task
+            name, due date, urgency, duration, and other details it recognizes.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs1.png" alt="Holding the Voice button while speaking a task into Vantage.">
+        </div>
+
+        <ul>
+          <li>
+            <strong>Type.</strong> Tap Type and enter the task the same way you
+            would say it aloud.
+          </li>
+          <li>
+            <strong>Siri.</strong> You can also add one or more tasks without
+            opening Vantage. Say &ldquo;Hey Siri, add a task in Vantage.&rdquo;
+            Siri asks &ldquo;What&rsquo;s the task?&rdquo; — speak naturally, and
+            Siri repeats what it heard and asks whether you want to add another.
+            Say yes to keep going or no when you are finished.
+          </li>
+          <li>
+            The next time you open Vantage, it processes what you said and
+            creates regular tasks. If Vantage needs clarification, it will ask
+            you then.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs2.png" alt="Adding a task through Siri without opening Vantage.">
+        </div>
+
+      </section>
+
+
+      <!-- 2 -->
+
+      <section class="step">
+
+        <h2><span class="step-num">2</span> Check the Details</h2>
+
+        <ul>
+          <li>
+            After Voice or Type entry, Vantage shows a confirmation screen.
+          </li>
+          <li>
+            <strong>Guessed details.</strong> Anything shown in
+            <span class="amber">amber with a &ldquo;?&rdquo;</span> is
+            Vantage&rsquo;s best guess. Tap it to confirm or change it. Confirmed
+            fields turn blue.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs3.png" alt="The confirmation screen, with guessed fields shown in amber.">
+        </div>
+
+        <ul>
+          <li>
+            You can also turn on Calendar if you want a task with a date or time
+            added to your calendar.
+          </li>
+          <li>
+            After saving a task, tap its name whenever you want to see or edit
+            its details.
+          </li>
+          <li>
+            You do not need to fill in every field. Use the ones that are
+            helpful. A few useful examples:
+            <ul class="sub-list">
+              <li>
+                <strong>Duration.</strong> Add an estimated duration so you can
+                later find tasks that fit the time you have available.
+              </li>
+              <li>
+                <strong>Depends on.</strong> Keeps a task hidden until another
+                task is completed.
+              </li>
+              <li>
+                <strong>Repeating tasks.</strong> Brings a recurring task back
+                before it is due again.
+              </li>
+            </ul>
+          </li>
+          <li>
+            There are more options in Task Details. You can learn those as you
+            need them.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs4.png" alt="Task Details, with optional fields like duration and dependencies.">
+        </div>
+
+      </section>
+
+
+      <!-- 3 -->
+
+      <section class="step">
+
+        <h2><span class="step-num">3</span> Plan What to Do</h2>
+
+        <ul>
+          <li>
+            You do not have to look at your entire task list all day.
+          </li>
+          <li>
+            <strong>Today&rsquo;s Plan.</strong> Tap the circles beside the tasks
+            you want to work on today, then tap Today&rsquo;s Plan. Vantage hides
+            the other tasks so you can concentrate on the ones you selected.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs5.png" alt="Selecting tasks for Today's Plan.">
+        </div>
+
+        <ul>
+          <li>
+            You can also sort your list by things such as duration, due date,
+            project, or difficulty to help decide what fits your day.
+          </li>
+          <li>
+            <strong>Pick for Me.</strong> If you do not want to choose task by
+            task, tell Vantage how much time you have. Vantage will suggest a
+            group of tasks based mostly on urgency and due date. You can accept
+            the list or change it.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs6.png" alt="Pick for Me suggesting a group of tasks for the time available.">
+        </div>
+
+      </section>
+
+
+      <!-- 4 -->
+
+      <section class="step">
+
+        <h2><span class="step-num">4</span> Focus and Finish</h2>
+
+        <ul>
+          <li>
+            <strong>Focus Mode.</strong> When you&rsquo;re ready to just do the
+            work, Focus Mode shows one task at a time so nothing else competes
+            for your attention.
+          </li>
+          <li>
+            It can show the task&rsquo;s estimated duration, due date, and a
+            timer. You can pause or reset the timer, and move to the next or
+            previous task. The timer pauses automatically when you move away
+            from a task.
+          </li>
+        </ul>
+
+        <div class="shots">
+          <img src="images/quickstart/qs7.png" alt="Focus Mode showing one task at a time with a timer.">
+        </div>
+
+        <ul>
+          <li>
+            <strong>Complete a task.</strong> Press and hold a task in the main
+            list, or tap Complete in Focus Mode.
+          </li>
+          <li>
+            Completed tasks are kept in Review so you can look back at what you
+            have done.
+          </li>
+        </ul>
+
+      </section>
+
+
+      <!-- MORE -->
+
+      <div class="more">
+        <h2>And there&rsquo;s more</h2>
+        <p>
+          Notes, Review, goals, projects, recurring tasks, subtasks, backups,
+          and everything else are covered in How to Use Vantage, inside the app
+          under Settings &rarr; Help.
+        </p>
+      </div>
+
+
+      <div class="cta-row">
+
+        <a
+          class="button button-primary"
+          href="https://testflight.apple.com/join/jPaCAjzx"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join the beta test
+        </a>
+
+        <a class="button button-secondary" href="index.html">
+          Back to home
+        </a>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="wrap">
+
+      © 2026 RegularJoeSoftware
+
+      <br><br>
+
+      <a href="index.html">Home</a>
+      <a href="quickstart.html">Quick Start Guide</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:regularjoesoftware@gmail.com">Contact</a>
+
+    </div>
+  </footer>
+
+</body>
+</html>
