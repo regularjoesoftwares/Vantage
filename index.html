@@ -94,33 +94,46 @@
       flex-wrap: wrap;
     }
 
-    .beta-steps {
-      max-width: 540px;
-      margin: 34px auto 0;
-      padding: 20px 26px;
+    .beta-flow {
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 24px 26px 22px;
       background: #edf5ff;
       border-radius: 16px;
-      text-align: left;
+    }
+
+    .beta-flow-title {
+      margin: 0 0 14px;
+      font-size: 16px;
+      color: #172033;
+    }
+
+    .beta-step-text {
+      margin: 0;
       font-size: 15px;
       line-height: 1.5;
       color: #29486c;
     }
 
-    .beta-steps strong {
+    .beta-step-text strong {
       color: #172033;
     }
 
-    .beta-steps ol {
-      margin: 8px 0 0;
-      padding-left: 22px;
+    .beta-step-text em {
+      font-style: normal;
+      font-weight: 700;
+      color: #172033;
     }
 
-    .beta-steps li {
-      margin: 0 0 6px;
+    .beta-flow .cta-row {
+      margin-top: 10px;
+      margin-bottom: 16px;
     }
 
-    .beta-steps .skip {
-      margin: 12px 0 0;
+    .beta-flow .skip {
+      margin: 14px 0 0;
+      font-size: 14px;
       font-style: italic;
       color: #4a6b93;
     }
@@ -153,6 +166,30 @@
     .button-secondary:hover {
       transform: translateY(-1px);
       background: white;
+    }
+
+    .button-go {
+      background: #2e7d57;
+      color: white;
+    }
+
+    .button-go:hover {
+      transform: translateY(-1px);
+      background: #276b4a;
+    }
+
+    .cta-block {
+      margin-top: 34px;
+    }
+
+    .cta-block .cta-row {
+      margin-top: 16px;
+    }
+
+    .cta-lead {
+      margin: 0;
+      font-size: 16px;
+      color: #536174;
     }
 
     /* -------------------------
@@ -453,37 +490,53 @@
         managing a to-do list.
       </p>
 
-      <div class="beta-steps">
-        <strong>How to join the beta:</strong>
-        <ol>
-          <li>Tap <strong>Install TestFlight</strong> to install Apple's free TestFlight app.</li>
-          <li>Tap <strong>Join the Vantage Beta Test</strong> to open Vantage in TestFlight.</li>
-          <li>In TestFlight, tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
-        </ol>
-        <p class="skip">Already have TestFlight? Skip to step 2.</p>
+      <div class="cta-block beta-flow">
+        <p class="beta-flow-title"><strong>How to join the beta</strong></p>
+
+        <p class="beta-step-text">
+          <strong>1.</strong> Tap <em>Install TestFlight</em> to get Apple's free TestFlight app.
+        </p>
+        <div class="cta-row">
+          <a class="button button-go" href="https://testflight.apple.com/join/jPaCAjzx">
+            Install TestFlight
+          </a>
+        </div>
+
+        <p class="beta-step-text">
+          <strong>2.</strong> Tap <em>Join the Vantage Beta Test</em> to open Vantage in TestFlight.
+        </p>
+        <div class="cta-row">
+          <a class="button button-go" href="https://testflight.apple.com/join/jPaCAjzx">
+            Join the Vantage Beta Test
+          </a>
+        </div>
+
+        <p class="beta-step-text">
+          <strong>3.</strong> In TestFlight, tap <strong>Accept</strong>, then <strong>Install</strong>.
+        </p>
+
+        <p class="skip">Already have TestFlight? Start at step 2.</p>
       </div>
 
-      <div class="cta-row">
+      <div class="cta-block">
+        <p class="cta-lead">Want to see what it's like first?</p>
+        <div class="cta-row">
+          <a class="button button-primary" href="quickstart.html">
+            Quick Start Guide
+          </a>
+        </div>
+      </div>
 
-        <a class="button button-primary" href="https://testflight.apple.com/join/jPaCAjzx">
-          Install TestFlight
-        </a>
-
-        <a class="button button-primary" href="https://testflight.apple.com/join/jPaCAjzx">
-          Join the Vantage Beta Test
-        </a>
-
-        <a
-          class="button button-secondary"
-          href="mailto:support@regularjoesoftware.com?subject=Notify%20me%20when%20Vantage%20launches"
-        >
-          Get notified at launch
-        </a>
-
-        <a class="button button-secondary" href="quickstart.html">
-          Quick Start Guide
-        </a>
-
+      <div class="cta-block">
+        <p class="cta-lead">Like what you see, but not ready yet?</p>
+        <div class="cta-row">
+          <a
+            class="button button-primary"
+            href="mailto:support@regularjoesoftware.com?subject=Notify%20me%20when%20Vantage%20launches"
+          >
+            Get notified at launch
+          </a>
+        </div>
       </div>
 
       <div class="hero-promise">
@@ -828,33 +881,53 @@
       </p>
 
 
-      <div class="beta-steps">
-        <strong>How to join the beta:</strong>
-        <ol>
-          <li>Tap <strong>Install TestFlight</strong> to install Apple's free TestFlight app.</li>
-          <li>Tap <strong>Join the Vantage Beta Test</strong> to open Vantage in TestFlight.</li>
-          <li>In TestFlight, tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
-        </ol>
-        <p class="skip">Already have TestFlight? Skip to step 2.</p>
+      <div class="cta-block beta-flow">
+        <p class="beta-flow-title"><strong>How to join the beta</strong></p>
+
+        <p class="beta-step-text">
+          <strong>1.</strong> Tap <em>Install TestFlight</em> to get Apple's free TestFlight app.
+        </p>
+        <div class="cta-row">
+          <a class="button button-go" href="https://testflight.apple.com/join/jPaCAjzx">
+            Install TestFlight
+          </a>
+        </div>
+
+        <p class="beta-step-text">
+          <strong>2.</strong> Tap <em>Join the Vantage Beta Test</em> to open Vantage in TestFlight.
+        </p>
+        <div class="cta-row">
+          <a class="button button-go" href="https://testflight.apple.com/join/jPaCAjzx">
+            Join the Vantage Beta Test
+          </a>
+        </div>
+
+        <p class="beta-step-text">
+          <strong>3.</strong> In TestFlight, tap <strong>Accept</strong>, then <strong>Install</strong>.
+        </p>
+
+        <p class="skip">Already have TestFlight? Start at step 2.</p>
       </div>
 
-      <div class="cta-row">
+      <div class="cta-block">
+        <p class="cta-lead">Want to see what it's like first?</p>
+        <div class="cta-row">
+          <a class="button button-primary" href="quickstart.html">
+            Quick Start Guide
+          </a>
+        </div>
+      </div>
 
-        <a class="button button-primary" href="https://testflight.apple.com/join/jPaCAjzx">
-          Install TestFlight
-        </a>
-
-        <a class="button button-primary" href="https://testflight.apple.com/join/jPaCAjzx">
-          Join the Vantage Beta Test
-        </a>
-
-        <a
-          class="button button-secondary"
-          href="mailto:support@regularjoesoftware.com?subject=Notify%20me%20when%20Vantage%20launches"
-        >
-          Get notified at launch
-        </a>
-
+      <div class="cta-block">
+        <p class="cta-lead">Like what you see, but not ready yet?</p>
+        <div class="cta-row">
+          <a
+            class="button button-primary"
+            href="mailto:support@regularjoesoftware.com?subject=Notify%20me%20when%20Vantage%20launches"
+          >
+            Get notified at launch
+          </a>
+        </div>
       </div>
 
     </div>
