@@ -7,99 +7,265 @@
   <title>Vantage — Quick Start Guide</title>
   <meta
     name="description"
-    content="The Vantage Quick Start Guide: add a task by voice, type, or Siri; check the details; plan your day; focus and finish."
+    content="Get started with Vantage: add a task by voice, type, or Siri; check the details; plan your day; focus, take notes, and review your progress."
   >
 
   <style>
+    :root {
+      --ink:    #172033;
+      --muted:  #536174;
+      --accent: #295b9b;
+      --line:   #dce3ec;
+      --paper:  #f8fafc;
+      --card:   #ffffff;
+    }
     * { box-sizing: border-box; }
 
-    html, body { margin: 0; }
-    html { height: 100%; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
     body {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
+      margin: 0;
       font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Helvetica, Arial, sans-serif;
-      color: #172033;
-      background: #eef2f7;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
     }
 
+    a { color: var(--accent); }
+
+    /* ---- top bar ---- */
     .bar {
-      flex: none;
+      position: sticky;
+      top: 0;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       padding: 12px 20px;
-      background: #ffffff;
-      border-bottom: 1px solid #dce3ec;
-      position: sticky;
-      top: 0;
-      z-index: 2;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(1.8) blur(8px);
+      border-bottom: 1px solid var(--line);
     }
-
-    .bar a {
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      color: #295b9b;
-    }
-
+    .bar a { text-decoration: none; font-weight: 600; font-size: 15px; }
     .bar .download {
       padding: 8px 14px;
       border-radius: 8px;
-      background: #295b9b;
-      color: #ffffff;
+      background: var(--accent);
+      color: #fff;
     }
 
-    /* Desktop: the real PDF, full fidelity */
-    .viewer {
-      flex: 1;
+    /* ---- page frame ---- */
+    main {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin: 0 0 14px;
+    }
+    .intro {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 8px;
+    }
+
+    /* ---- section cards ---- */
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 24px 8px;
+      margin-top: 22px;
+      scroll-margin-top: 72px;
+    }
+    h2 {
+      font-size: 22px;
+      letter-spacing: -0.4px;
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #cfe0f2;
+    }
+    section p { margin: 0 0 14px; }
+    section strong { color: var(--ink); }
+
+    .sub {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .sub li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 7px;
+    }
+    .sub li::before {
+      content: "";
+      position: absolute;
+      left: 2px; top: 11px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---- screenshots ---- */
+    figure {
+      margin: 6px 0 26px;   /* the blank line between an image and the next block */
+      text-align: center;
+    }
+    figure img {
       width: 100%;
-      min-height: 80vh;
-      border: 0;
+      max-width: 300px;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f2f4f7;
     }
 
-    /* Mobile: the two rendered pages, which zoom and read far better
-       than a PDF crammed into an iframe */
-    .pages {
-      display: none;
-      padding: 16px 12px 40px;
+    /* ---- Additional Features ---- */
+    .additional { background: #eef3fa; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; }
+    .features p {
+      padding-top: 12px;
+      border-top: 1px solid #d3e0ef;
+      margin-bottom: 12px;
+    }
+    .features strong { display: block; margin-bottom: 2px; }
+    @media (max-width: 620px) {
+      .features { grid-template-columns: 1fr; }
     }
 
-    .pages img {
-      display: block;
-      width: 100%;
-      max-width: 820px;
-      margin: 0 auto 16px;
-      border: 1px solid #dce3ec;
-      border-radius: 6px;
-      box-shadow: 0 2px 10px rgba(23, 32, 51, 0.08);
-      background: #fff;
+    footer {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 8px 0 48px;
+      color: var(--muted);
+      font-size: 14px;
     }
+    footer a { text-decoration: none; }
 
-    @media (max-width: 760px) {
-      .viewer { display: none; }
-      .pages  { display: block; }
+    @media print {
+      .bar, footer { display: none; }
+      body { background: #fff; }
+      section { border: 0; padding: 8px 0; break-inside: avoid; margin-top: 14px; }
+      figure img { max-width: 240px; }
+      .additional { background: #fff; }
     }
   </style>
 </head>
-<body>
+<body id="top">
 
   <div class="bar">
     <a href="index.html">&larr; Vantage</a>
     <a class="download" href="quickstart.pdf" download>Download PDF</a>
   </div>
 
-  <iframe class="viewer" src="quickstart.pdf#view=FitH" title="Vantage Quick Start Guide"></iframe>
+  <main>
+    <h1>Quick Start Guide</h1>
+    <p class="intro">These are the basic features to get you started. The full feature list is in How to Use Vantage, just below this guide in Settings.</p>
 
-  <div class="pages">
-    <img src="images/quickstart/qsg-page1.png" alt="Vantage Quick Start Guide, page 1: Add a Task, Plan Your Day, Focus Mode.">
-    <img src="images/quickstart/qsg-page2.png" alt="Vantage Quick Start Guide, page 2: Notes, Review, Settings, Additional Features.">
-  </div>
+    <!-- ── Add a Task ─────────────────────────────────────────────── -->
+    <section id="add-a-task">
+      <h2>Add a Task</h2>
+      <p><strong>1. Task List.</strong> Tasks show up here &mdash; tap the circles to add them to Today&rsquo;s Plan.</p>
+      <p><strong>2. Voice.</strong> Push and hold until you&rsquo;re done. Vantage sorts the information for you.</p>
+      <p><strong>3. Type.</strong> Same, but you type in the information.</p>
+      <figure><img src="images/quickstart/qsgadd.webp" alt="The task list, with the Voice and Type buttons below it." loading="lazy"></figure>
+
+      <p><strong>4. Parsed fields are blue; Vantage&rsquo;s guesses are amber</strong> &mdash; tap to confirm or edit. Flip <strong>Calendar</strong> on to also add the task to your calendar.</p>
+      <figure><img src="images/quickstart/qsgconfirm.webp" alt="The confirm screen, showing parsed fields and guessed fields." loading="lazy"></figure>
+
+      <p><strong>5. Siri.</strong> Say &ldquo;Hey Siri, add a task in Vantage,&rdquo; and follow the prompts to capture tasks on the run.</p>
+      <figure><img src="images/quickstart/qsgsiri.webp" alt="A task captured through Siri." loading="lazy"></figure>
+
+      <p><strong>6. Complete a task.</strong> Press and hold a task in the main list, or tap Complete in Focus Mode.</p>
+      <p><strong>7. Task details.</strong> Tap a task name to see its details, add more info, or turn it into a Note.</p>
+      <figure><img src="images/quickstart/qsgdetail.webp" alt="The task detail screen." loading="lazy"></figure>
+    </section>
+
+    <!-- ── Plan Your Day ─────────────────────────────────────────── -->
+    <section id="plan-your-day">
+      <h2>Plan Your Day</h2>
+      <p><strong>8. Today&rsquo;s Plan.</strong> Shows only the tasks you selected so you can focus on today.</p>
+      <p><strong>9. Pick for Me.</strong> Tell Vantage how much time you have, and it creates a plan that fits, based on urgency and due dates.</p>
+      <figure><img src="images/quickstart/qsgbuttons.webp" alt="The Today's Plan and Pick for Me buttons." loading="lazy"></figure>
+      <figure><img src="images/quickstart/qsgpick.webp" alt="Choosing how much time you have." loading="lazy"></figure>
+
+      <p><strong>10.</strong> Drag the three lines to reorder your selected tasks.</p>
+      <figure><img src="images/quickstart/qsgplan.webp" alt="Selected tasks with reorder handles." loading="lazy"></figure>
+    </section>
+
+    <!-- ── Focus Mode ───────────────────────────────────────────── -->
+    <section id="focus-mode">
+      <h2>Focus Mode</h2>
+      <p><strong>11.</strong> One task at a time, with a timer. Cycle between tasks &mdash; each pauses until you return. No estimated duration yet? Set it here too.</p>
+      <figure><img src="images/quickstart/qsgfocus.webp" alt="Focus Mode, with a running timer and a Complete button." loading="lazy"></figure>
+    </section>
+
+    <!-- ── Notes ────────────────────────────────────────────────── -->
+    <section id="notes">
+      <h2>Notes</h2>
+      <p><strong>12.</strong> Anything can become a Note instead of a task, and back again &mdash; search notes, or group them by category or project.</p>
+      <figure><img src="images/quickstart/qsgnotes.webp" alt="The notes list." loading="lazy"></figure>
+      <figure><img src="images/quickstart/qsgnotedetail.webp" alt="A note's detail screen, with Convert to Task." loading="lazy"></figure>
+    </section>
+
+    <!-- ── Review ───────────────────────────────────────────────── -->
+    <section id="review">
+      <h2>Review</h2>
+      <p><strong>13.</strong> Review has five parts:</p>
+      <ul class="sub">
+        <li><strong>Looking Back</strong> &mdash; what you did recently.</li>
+        <li><strong>Needs Attention</strong> &mdash; things you might forget, or that are overdue.</li>
+        <li><strong>Looking Forward</strong> &mdash; what&rsquo;s coming up in the next week or so.</li>
+        <li><strong>Make Adjustments</strong> &mdash; add goals and link tasks to them so you can track your progress.</li>
+        <li><strong>Vantage Noticed</strong> &mdash; patterns Vantage notices in how you work over time.</li>
+      </ul>
+      <figure><img src="images/quickstart/qsgreview.webp" alt="The Review section expanded." loading="lazy"></figure>
+    </section>
+
+    <!-- ── Settings ─────────────────────────────────────────────── -->
+    <section id="settings">
+      <h2>Settings</h2>
+      <p><strong>14.</strong> What&rsquo;s in Settings:</p>
+      <ul class="sub">
+        <li>Set daily reminders</li>
+        <li>Adjust hints and preferences</li>
+        <li>Manage projects</li>
+        <li>Back up / restore your data</li>
+        <li>Send us feedback</li>
+        <li>Find the How to Use Vantage guide</li>
+      </ul>
+      <p>Check it out when you&rsquo;re ready.</p>
+      <figure><img src="images/quickstart/qsgsettings.webp" alt="The Settings screen." loading="lazy"></figure>
+    </section>
+
+    <!-- ── Additional Features ──────────────────────────────────── -->
+    <section id="additional-features" class="additional">
+      <h2>Additional Features</h2>
+      <p style="color:var(--muted)">See How to Use Vantage in Settings for details.</p>
+      <div class="features">
+        <p><strong>Categories &amp; Projects</strong> organize tasks by where you&rsquo;ll do them, or what project they&rsquo;re for</p>
+        <p><strong>Goals</strong> capture your goals or dreams, link tasks to them, and track your goal progress</p>
+        <p><strong>Subtasks</strong> break a task down into smaller subtasks</p>
+        <p><strong>Depends on</strong> make a task depend on another one &mdash; it stays hidden until the first task is done</p>
+        <p><strong>Recurring tasks</strong> mark a task as recurring, and set how often and when it reappears in the list</p>
+        <p><strong>Calendar</strong> add a task with a due date (or date and time) to your default calendar with one tap</p>
+        <p><strong>Sort &amp; group</strong> sort tasks by duration, due date, and more; group notes by category or project</p>
+        <p><strong>Search</strong> search tasks by task name, or notes by note name</p>
+        <p><strong>Widget</strong> see your next few tasks right on your Home Screen or Lock Screen</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><a href="#top">Back to top &uarr;</a></footer>
 
 </body>
 </html>
