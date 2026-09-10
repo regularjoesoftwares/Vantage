@@ -59,9 +59,9 @@
 
     /* ---- page frame ---- */
     main {
-      width: min(760px, calc(100% - 40px));
+      width: min(880px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 40px 0 64px;
+      padding: 36px 0 60px;
     }
 
     h1 {
@@ -82,29 +82,29 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 22px 24px 8px;
-      margin-top: 22px;
+      padding: 20px 22px 10px;
+      margin-top: 20px;
       scroll-margin-top: 72px;
     }
     h2 {
       font-size: 22px;
       letter-spacing: -0.4px;
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       padding-bottom: 10px;
       border-bottom: 2px solid #cfe0f2;
     }
-    section p { margin: 0 0 14px; }
+    section p { margin: 0 0 12px; }
     section strong { color: var(--ink); }
 
     .sub {
       list-style: none;
       padding: 0;
-      margin: 0 0 14px;
+      margin: 0 0 12px;
     }
     .sub li {
       padding-left: 16px;
       position: relative;
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
     .sub li::before {
       content: "";
@@ -115,18 +115,36 @@
       background: var(--accent);
     }
 
-    /* ---- screenshots ---- */
-    figure {
-      margin: 6px 0 26px;   /* the blank line between an image and the next block */
-      text-align: center;
-    }
+    /* ---- step rows: copy + screenshot(s) ---- */
+    .step { margin-bottom: 14px; }
+    .step-copy > :last-child { margin-bottom: 0; }
+
+    figure { margin: 8px 0 20px; text-align: center; }
     figure img {
       width: 100%;
-      max-width: 300px;
+      max-width: 240px;
       height: auto;
       border: 1px solid var(--line);
       border-radius: 12px;
       background: #f2f4f7;
+    }
+
+    /* Desktop: screenshot sits beside its text instead of below it. */
+    @media (min-width: 720px) {
+      .step {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        margin-bottom: 22px;
+      }
+      .step-copy  { flex: 1 1 auto; min-width: 0; }
+      .step-media {
+        flex: 0 0 240px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .step-media figure { margin: 0; }
     }
 
     /* ---- Additional Features ---- */
@@ -143,7 +161,7 @@
     }
 
     footer {
-      width: min(760px, calc(100% - 40px));
+      width: min(880px, calc(100% - 40px));
       margin: 0 auto;
       padding: 8px 0 48px;
       color: var(--muted);
@@ -155,7 +173,8 @@
       .bar, footer { display: none; }
       body { background: #fff; }
       section { border: 0; padding: 8px 0; break-inside: avoid; margin-top: 14px; }
-      figure img { max-width: 240px; }
+      .step { display: block; }
+      figure img { max-width: 210px; }
       .additional { background: #fff; }
     }
   </style>
@@ -174,77 +193,143 @@
     <!-- ── Add a Task ─────────────────────────────────────────────── -->
     <section id="add-a-task">
       <h2>Add a Task</h2>
-      <p><strong>1. Task List.</strong> Tasks show up here &mdash; tap the circles to add them to Today&rsquo;s Plan.</p>
-      <p><strong>2. Voice.</strong> Push and hold until you&rsquo;re done. Vantage sorts the information for you.</p>
-      <p><strong>3. Type.</strong> Same, but you type in the information.</p>
-      <figure><img src="images/quickstart/qsgadd.webp" alt="The task list, with the Voice and Type buttons below it." loading="lazy"></figure>
 
-      <p><strong>4. Parsed fields are blue; Vantage&rsquo;s guesses are amber</strong> &mdash; tap to confirm or edit. Flip <strong>Calendar</strong> on to also add the task to your calendar.</p>
-      <figure><img src="images/quickstart/qsgconfirm.webp" alt="The confirm screen, showing parsed fields and guessed fields." loading="lazy"></figure>
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>1. Task List.</strong> Tasks show up here &mdash; tap the circles to add them to Today&rsquo;s Plan.</p>
+          <p><strong>2. Voice.</strong> Push and hold until you&rsquo;re done. Vantage sorts the information for you.</p>
+          <p><strong>3. Type.</strong> Same, but you type in the information.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgadd.webp" alt="The task list, with the Voice and Type buttons below it." loading="lazy"></figure>
+        </div>
+      </div>
 
-      <p><strong>5. Siri.</strong> Say &ldquo;Hey Siri, add a task in Vantage,&rdquo; and follow the prompts to capture tasks on the run.</p>
-      <figure><img src="images/quickstart/qsgsiri.webp" alt="A task captured through Siri." loading="lazy"></figure>
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>4. Parsed fields are blue; Vantage&rsquo;s guesses are amber</strong> &mdash; tap to confirm or edit. Flip <strong>Calendar</strong> on to also add the task to your calendar.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgconfirm.webp" alt="The confirm screen, showing parsed fields and guessed fields." loading="lazy"></figure>
+        </div>
+      </div>
 
-      <p><strong>6. Complete a task.</strong> Press and hold a task in the main list, or tap Complete in Focus Mode.</p>
-      <p><strong>7. Task details.</strong> Tap a task name to see its details, add more info, or turn it into a Note.</p>
-      <figure><img src="images/quickstart/qsgdetail.webp" alt="The task detail screen." loading="lazy"></figure>
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>5. Siri.</strong> Say &ldquo;Hey Siri, add a task in Vantage,&rdquo; and follow the prompts to capture tasks on the run.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgsiri.webp" alt="A task captured through Siri." loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>6. Complete a task.</strong> Press and hold a task in the main list, or tap Complete in Focus Mode.</p>
+          <p><strong>7. Task details.</strong> Tap a task name to see its details, add more info, or turn it into a Note.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgdetail.webp" alt="The task detail screen." loading="lazy"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ── Plan Your Day ─────────────────────────────────────────── -->
     <section id="plan-your-day">
       <h2>Plan Your Day</h2>
-      <p><strong>8. Today&rsquo;s Plan.</strong> Shows only the tasks you selected so you can focus on today.</p>
-      <p><strong>9. Pick for Me.</strong> Tell Vantage how much time you have, and it creates a plan that fits, based on urgency and due dates.</p>
-      <figure><img src="images/quickstart/qsgbuttons.webp" alt="The Today's Plan and Pick for Me buttons." loading="lazy"></figure>
-      <figure><img src="images/quickstart/qsgpick.webp" alt="Choosing how much time you have." loading="lazy"></figure>
 
-      <p><strong>10.</strong> Drag the three lines to reorder your selected tasks.</p>
-      <figure><img src="images/quickstart/qsgplan.webp" alt="Selected tasks with reorder handles." loading="lazy"></figure>
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>8. Today&rsquo;s Plan.</strong> Shows only the tasks you selected so you can focus on today.</p>
+          <p><strong>9. Pick for Me.</strong> Tell Vantage how much time you have, and it creates a plan that fits, based on urgency and due dates.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgbuttons.webp" alt="The Today's Plan and Pick for Me buttons." loading="lazy"></figure>
+          <figure><img src="images/quickstart/qsgpick.webp" alt="Choosing how much time you have." loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>10.</strong> Drag the three lines to reorder your selected tasks.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgplan.webp" alt="Selected tasks with reorder handles." loading="lazy"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ── Focus Mode ───────────────────────────────────────────── -->
     <section id="focus-mode">
       <h2>Focus Mode</h2>
-      <p><strong>11.</strong> One task at a time, with a timer. Cycle between tasks &mdash; each pauses until you return. No estimated duration yet? Set it here too.</p>
-      <figure><img src="images/quickstart/qsgfocus.webp" alt="Focus Mode, with a running timer and a Complete button." loading="lazy"></figure>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>11.</strong> One task at a time, with a timer. Cycle between tasks &mdash; each pauses until you return. No estimated duration yet? Set it here too.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgfocus.webp" alt="Focus Mode, with a running timer and a Complete button." loading="lazy"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ── Notes ────────────────────────────────────────────────── -->
     <section id="notes">
       <h2>Notes</h2>
-      <p><strong>12.</strong> Anything can become a Note instead of a task, and back again &mdash; search notes, or group them by category or project.</p>
-      <figure><img src="images/quickstart/qsgnotes.webp" alt="The notes list." loading="lazy"></figure>
-      <figure><img src="images/quickstart/qsgnotedetail.webp" alt="A note's detail screen, with Convert to Task." loading="lazy"></figure>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>12.</strong> Anything can become a Note instead of a task, and back again &mdash; search notes, or group them by category or project.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgnotes.webp" alt="The notes list." loading="lazy"></figure>
+          <figure><img src="images/quickstart/qsgnotedetail.webp" alt="A note's detail screen, with Convert to Task." loading="lazy"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ── Review ───────────────────────────────────────────────── -->
     <section id="review">
       <h2>Review</h2>
-      <p><strong>13.</strong> Review has five parts:</p>
-      <ul class="sub">
-        <li><strong>Looking Back</strong> &mdash; what you did recently.</li>
-        <li><strong>Needs Attention</strong> &mdash; things you might forget, or that are overdue.</li>
-        <li><strong>Looking Forward</strong> &mdash; what&rsquo;s coming up in the next week or so.</li>
-        <li><strong>Make Adjustments</strong> &mdash; add goals and link tasks to them so you can track your progress.</li>
-        <li><strong>Vantage Noticed</strong> &mdash; patterns Vantage notices in how you work over time.</li>
-      </ul>
-      <figure><img src="images/quickstart/qsgreview.webp" alt="The Review section expanded." loading="lazy"></figure>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>13.</strong> Review has five parts:</p>
+          <ul class="sub">
+            <li><strong>Looking Back</strong> &mdash; what you did recently.</li>
+            <li><strong>Needs Attention</strong> &mdash; things you might forget, or that are overdue.</li>
+            <li><strong>Looking Forward</strong> &mdash; what&rsquo;s coming up in the next week or so.</li>
+            <li><strong>Make Adjustments</strong> &mdash; add goals and link tasks to them so you can track your progress.</li>
+            <li><strong>Vantage Noticed</strong> &mdash; patterns Vantage notices in how you work over time.</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgreview.webp" alt="The Review section expanded." loading="lazy"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ── Settings ─────────────────────────────────────────────── -->
     <section id="settings">
       <h2>Settings</h2>
-      <p><strong>14.</strong> What&rsquo;s in Settings:</p>
-      <ul class="sub">
-        <li>Set daily reminders</li>
-        <li>Adjust hints and preferences</li>
-        <li>Manage projects</li>
-        <li>Back up / restore your data</li>
-        <li>Send us feedback</li>
-        <li>Find the How to Use Vantage guide</li>
-      </ul>
-      <p>Check it out when you&rsquo;re ready.</p>
-      <figure><img src="images/quickstart/qsgsettings.webp" alt="The Settings screen." loading="lazy"></figure>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>14.</strong> What&rsquo;s in Settings:</p>
+          <ul class="sub">
+            <li>Set daily reminders</li>
+            <li>Adjust hints and preferences</li>
+            <li>Manage projects</li>
+            <li>Back up / restore your data</li>
+            <li>Send us feedback</li>
+            <li>Find the How to Use Vantage guide</li>
+          </ul>
+          <p>Check it out when you&rsquo;re ready.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgsettings.webp" alt="The Settings screen." loading="lazy"></figure>
+        </div>
+      </div>
     </section>
 
     <!-- ── Additional Features ──────────────────────────────────── -->
