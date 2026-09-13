@@ -76,6 +76,27 @@
       font-size: 17px;
       margin: 0 0 8px;
     }
+    .intro strong { color: var(--ink); }
+
+    /* ---- availability divider (Sep 2026) ---- */
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 22px 0 0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .availability.both  { color: var(--accent); }
+    .availability.full  { color: #a06a1f; }
+    .availability::after {
+      content: "";
+      flex: 1 1 auto;
+      height: 1px;
+      background: var(--line);
+    }
 
     /* ---- section cards ---- */
     section {
@@ -189,7 +210,9 @@
 
   <main>
     <h1>Quick Start Guide</h1>
-    <p class="intro">These are the basic features to get you started. The full feature list is in How to Use Vantage, just below this guide in Settings.</p>
+    <p class="intro">These are the basic features to get you started.<br>The complete feature list in <strong>How to use Vantage</strong>, along with the toggle between <strong>Simple</strong> and <strong>Full</strong> modes, are in <strong>Settings</strong>.</p>
+
+    <p class="availability both">Simple and full modes</p>
 
     <!-- ── Add a Task ─────────────────────────────────────────────── -->
     <section id="add-a-task">
@@ -240,14 +263,54 @@
       </div>
     </section>
 
+    <!-- ── Notes ────────────────────────────────────────────────── -->
+    <section id="notes">
+      <h2>Notes</h2>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>8.</strong> Anything can become a Note instead of a task, and back again &mdash; search notes, or group them by category or project.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgnotes.webp" alt="The notes list." loading="lazy"></figure>
+          <figure><img src="images/quickstart/qsgnotedetail.webp" alt="A note's detail screen, with Convert to Task." loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Settings ─────────────────────────────────────────────── -->
+    <section id="settings">
+      <h2>Settings</h2>
+
+      <div class="step">
+        <div class="step-copy">
+          <p><strong>9.</strong> What&rsquo;s in Settings:</p>
+          <ul class="sub">
+            <li>Set daily reminders</li>
+            <li>Adjust hints and preferences</li>
+            <li>Manage projects</li>
+            <li>Back up / restore your data</li>
+            <li>Send us feedback</li>
+            <li>Find the How to Use Vantage guide</li>
+          </ul>
+          <p>Check it out when you&rsquo;re ready.</p>
+        </div>
+        <div class="step-media">
+          <figure><img src="images/quickstart/qsgsettings.webp" alt="The Settings screen." loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <p class="availability full">Full mode only</p>
+
     <!-- ── Plan Your Day ─────────────────────────────────────────── -->
     <section id="plan-your-day">
       <h2>Plan Your Day</h2>
 
       <div class="step">
         <div class="step-copy">
-          <p><strong>8. Today&rsquo;s Plan.</strong> Shows only the tasks you selected so you can focus on today.</p>
-          <p><strong>9. Pick for Me.</strong> Tell Vantage how much time you have, and it creates a plan that fits, based on urgency and due dates.</p>
+          <p><strong>10. Today&rsquo;s Plan.</strong> Shows only the tasks you selected so you can focus on today.</p>
+          <p><strong>11. Pick for Me.</strong> Tell Vantage how much time you have, and it creates a plan that fits, based on urgency and due dates.</p>
         </div>
         <div class="step-media">
           <figure><img src="images/quickstart/qsgbuttons.webp" alt="The Today's Plan and Pick for Me buttons." loading="lazy"></figure>
@@ -257,7 +320,7 @@
 
       <div class="step">
         <div class="step-copy">
-          <p><strong>10.</strong> Drag the three lines to reorder your selected tasks.</p>
+          <p><strong>12.</strong> Drag the three lines to reorder your selected tasks.</p>
         </div>
         <div class="step-media">
           <figure><img src="images/quickstart/qsgplan.webp" alt="Selected tasks with reorder handles." loading="lazy"></figure>
@@ -271,25 +334,10 @@
 
       <div class="step">
         <div class="step-copy">
-          <p><strong>11.</strong> One task at a time, with a timer. Cycle between tasks &mdash; each pauses until you return. No estimated duration yet? Set it here too.</p>
+          <p><strong>13.</strong> One task at a time, with a timer. Cycle between tasks &mdash; each pauses until you return. No estimated duration yet? Set it here too.</p>
         </div>
         <div class="step-media">
           <figure><img src="images/quickstart/qsgfocus.webp" alt="Focus Mode, with a running timer and a Complete button." loading="lazy"></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Notes ────────────────────────────────────────────────── -->
-    <section id="notes">
-      <h2>Notes</h2>
-
-      <div class="step">
-        <div class="step-copy">
-          <p><strong>12.</strong> Anything can become a Note instead of a task, and back again &mdash; search notes, or group them by category or project.</p>
-        </div>
-        <div class="step-media">
-          <figure><img src="images/quickstart/qsgnotes.webp" alt="The notes list." loading="lazy"></figure>
-          <figure><img src="images/quickstart/qsgnotedetail.webp" alt="A note's detail screen, with Convert to Task." loading="lazy"></figure>
         </div>
       </div>
     </section>
@@ -300,7 +348,7 @@
 
       <div class="step">
         <div class="step-copy">
-          <p><strong>13.</strong> Review has five parts:</p>
+          <p><strong>14.</strong> Review has five parts:</p>
           <ul class="sub">
             <li><strong>Looking Back</strong> &mdash; what you did recently.</li>
             <li><strong>Needs Attention</strong> &mdash; things you might forget, or that are overdue.</li>
@@ -311,29 +359,6 @@
         </div>
         <div class="step-media">
           <figure><img src="images/quickstart/qsgreview.webp" alt="The Review section expanded." loading="lazy"></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Settings ─────────────────────────────────────────────── -->
-    <section id="settings">
-      <h2>Settings</h2>
-
-      <div class="step">
-        <div class="step-copy">
-          <p><strong>14.</strong> What&rsquo;s in Settings:</p>
-          <ul class="sub">
-            <li>Set daily reminders</li>
-            <li>Adjust hints and preferences</li>
-            <li>Manage projects</li>
-            <li>Back up / restore your data</li>
-            <li>Send us feedback</li>
-            <li>Find the How to Use Vantage guide</li>
-          </ul>
-          <p>Check it out when you&rsquo;re ready.</p>
-        </div>
-        <div class="step-media">
-          <figure><img src="images/quickstart/qsgsettings.webp" alt="The Settings screen." loading="lazy"></figure>
         </div>
       </div>
     </section>
